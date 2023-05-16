@@ -216,6 +216,12 @@ def generateFAQs(isExpanded):
                    'GeniePool contains data from multiple studies that used various sequencing techniques, some are better than others. Therefore, to avoid noisy results (e.g. a homozygous variant detected by a single read sequence) you can choose to filter by the amount of reads that covered the location of the variant and the sequencing quality.')
         faqs += qna('Why results don\'t include allele frequency for a variant?',
                    'While GeniePool contains data from many individuals, the data are derived from diverse studies that may have overrepresented data (e.g. shared samples or sequencing of multiple tumors from the same patient). Therefore, GeniePool should be used to assess whether a variant was previously found in a yes/no manner, and not to assess its frequency.')
+        docs = html.Div([html.Span('Yes - you are welcome to check out its '),
+                         html.A('documentation.', href = 'https://elasticbeanstalk-us-east-1-436967640529.s3.amazonaws.com/GeniePool+API+documentation.pdf', target = '_blank')])
+        faqs += qna('Does GeniePool comes with an Application Programming Interface (API)?', docs)
+        github = html.Div([html.Span("Sure - it's on "),
+                         html.A('GitHub.', href = 'https://github.com/geniepool', target = '_blank')])
+        faqs += qna('Can I look at the code?', github)
         faqs += []
         return [faqs]
 
@@ -744,5 +750,7 @@ def getRelevantVariants(chosen_attributes, data):
 
 # In[ ]:
 
+
 if __name__ == '__main__':
     server.run(debug=False)
+
